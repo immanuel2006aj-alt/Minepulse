@@ -3,8 +3,8 @@
 // Runs in background, reports to Supabase every 10 min.
 // ============================================================
 
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';          // Replace with your Project URL
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Replace with your anon public key
+const SUPABASE_URL = 'https://rwdkpjtrqmcildnhccwg.supabase.co';          // Replace with your Project URL
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3ZGtwanRycW1jaWxkbmhjY3dnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY2Mjg4MzIsImV4cCI6MjEwMjIwNDgzMn0.qpkXHXCKoUA3hFGRgrZNkYHvvhwOUJKHDXcmvoS7w4Y'; // Replace with your anon public key
 
 let userId = null;
 
