@@ -4,8 +4,8 @@
 
 // ---------- CONFIG ----------
 const CONFIG = {
-  SUPABASE_URL: 'YOUR_SUPABASE_URL',          // REPLACE
-  SUPABASE_ANON_KEY: 'YOUR_SUPABASE_ANON_KEY', // REPLACE
+  SUPABASE_URL: 'https://rwdkpjtrqmcildnhccwg.supabase.co',// REPLACE
+  SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3ZGtwanRycW1jaWxkbmhjY3dnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY2Mjg4MzIsImV4cCI6MjEwMjIwNDgzMn0.qpkXHXCKoUA3hFGRgrZNkYHvvhwOUJKHDXcmvoS7w4Y'; // R
   // WS_URL: 'wss://minepulse-backend.onrender.com/ws/mining', // optional WebSocket later
   API_BASE: 'https://minepulse-backend.onrender.com', // Render backend URL
 };
