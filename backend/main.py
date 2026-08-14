@@ -7,6 +7,7 @@ import time
 import firebase_admin
 from firebase_admin import credentials, messaging
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware  # <-- ADDED
 import logging
 
 # ============================================================
@@ -109,9 +110,21 @@ def get_resources():
         {"id":6,"name":"XMRchain","description":"Explorer","url":"https://xmrchain.net","icon":"M5 5h14v14H5z"},
     ]
 
-# ---------- FastAPI App ----------
+# ============================================================
+# FASTAPI APP WITH CORS
+# ============================================================
 app = FastAPI(title="MinePulse Engine")
 
+# ---------- CORS MIDDLEWARE ----------
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins (for testing)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ---------- ROUTES ----------
 @app.get("/")
 def root():
     return {"message": "Chimera Engine is running"}
