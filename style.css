@@ -924,3 +924,25 @@ body::after {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+/* ---------- CUSTOM ALERT MODAL ---------- */
+#custom-alert-modal .modal-content {
+  max-width: 380px;
+  text-align: center;
+}
+#custom-alert-modal .modal-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+#custom-alert-modal .modal-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+#custom-alert-modal .modal-actions {
+  display: flex;
+  justify-content: center;
+}
+#custom-alert-modal .btn-primary {
+  min-width: 100px;
+}
