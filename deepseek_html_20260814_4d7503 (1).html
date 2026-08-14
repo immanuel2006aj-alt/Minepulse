@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover" />
+  <title>MinePulse – Premium Mining</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FBBF24'/%3E%3Cpath d='M10 16 L13 19 L22 10' stroke='%23070B0E' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- ======================== LANDING PAGE ======================== -->
+    <div id="page-landing" class="page active">
+      <div class="landing-container">
+        <div class="landing-header">
+          <div class="logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="8" fill="#FBBF24" />
+              <path d="M10 16 L13 19 L22 10" stroke="#0B0F14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>MinePulse</span>
+          </div>
+        </div>
+        <div class="hero">
+          <h1>Earn ₹70 Daily.<br />Start Mining.</h1>
+          <p>Put your device's available computing power to work with a transparent mining experience built for modern devices.</p>
+          <div class="hero-buttons">
+            <button class="btn-primary" id="landing-start-btn">START MINING</button>
+            <button class="btn-secondary" id="landing-how-btn">HOW IT WORKS</button>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-label">ACTIVE MINERS</span>
+            <span class="stat-value" id="stat-miners">12,482</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">TOTAL REWARDS</span>
+            <span class="stat-value" id="stat-rewards">₹18.42L</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">NETWORK STATUS</span>
+            <span class="stat-value" id="stat-status">OPERATIONAL</span>
+            <span class="stat-dot green"></span>
+          </div>
+        </div>
+        <div class="register-card">
+          <h2>Create your account</h2>
+          <form id="register-form">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" placeholder="Enter username" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Min 6 characters" minlength="6" required />
+            </div>
+            <div class="form-group">
+              <label for="payout-method-select">Payout Preference</label>
+              <select id="payout-method-select">
+                <option value="USDT">USDT — TRC20</option>
+                <option value="INR">INR — UPI</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="wallet-address-input" id="wallet-label">USDT Wallet Address (TRC20)</label>
+              <input type="text" id="wallet-address-input" placeholder="Enter your TRC20 address" />
+            </div>
+            <div class="form-group">
+              <label for="referral">Referral Code (optional)</label>
+              <input type="text" id="referral" placeholder="Enter code" />
+            </div>
+            <button type="submit" class="btn-primary full-width">START MINING FOR FREE</button>
+          </form>
+          <p class="login-prompt">Already have an account? <a href="#" id="goto-login">Log in</a></p>
+        </div>
+        <div class="landing-footer">
+          <a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">FAQ</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== LOGIN PAGE ======================== -->
+    <div id="page-login" class="page">
+      <div class="landing-container">
+        <div class="landing-header">
+          <div class="logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="8" fill="#FBBF24" />
+              <path d="M10 16 L13 19 L22 10" stroke="#0B0F14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>MinePulse</span>
+          </div>
+        </div>
+        <div class="register-card">
+          <h2>Welcome back</h2>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-username">Username</label>
+              <input type="text" id="login-username" placeholder="Enter your username" required />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" placeholder="Enter password" required />
+            </div>
+            <button type="submit" class="btn-primary full-width">LOG IN</button>
+          </form>
+          <p class="login-prompt">New here? <a href="#" id="goto-register">Create account</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== MAIN DASHBOARD (PAGES CONTAINER) ======================== -->
+    <div id="page-dashboard" class="page">
+      <!-- Desktop Sidebar -->
+      <aside class="sidebar desktop-only">
+        <div class="sidebar-brand">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#FBBF24" />
+            <path d="M10 16 L13 19 L22 10" stroke="#0B0F14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>MinePulse</span>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" data-page="dashboard"><span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg></span> Dashboard</a>
+          <a href="#" class="nav-item" data-page="mining"><span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg></span> Mining</a>
+          <a href="#" class="nav-item" data-page="payouts"><span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v12M8 10l4-2 4 2" /></svg></span> Payouts</a>
+          <a href="#" class="nav-item" data-page="resources"><span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="12" y1="8" x2="12" y2="16" /></svg></span> Resources</a>
+          <!-- Notification Link (opens separate page) -->
+          <a href="notification.html" class="nav-item" target="_self"><span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span> Notifications</a>
+          <a href="#" class="nav-item" data-page="settings"><span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3" /><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" /></svg></span> Settings</a>
+          <a href="#" class="nav-item" data-page="help"><span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg></span> Help</a>
+          <a href="#" class="nav-item" id="logout-btn"><span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg></span> Logout</a>
+        </nav>
+      </aside>
+
+      <!-- Main Content Area -->
+      <div class="main-content">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="menu-toggle mobile-only" id="menu-toggle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+            </button>
+            <span class="page-title" id="page-title">Dashboard</span>
+          </div>
+          <div class="topbar-right">
+            <a href="notification.html" class="notif-btn" style="text-decoration:none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+              <span class="notif-dot" id="notif-dot"></span>
+            </a>
+            <div class="user-avatar" id="user-avatar">U</div>
+            <span class="username-display" id="user-username">Username</span>
+          </div>
+        </header>
+
+        <!-- ======== PAGE: DASHBOARD ======== -->
+        <div id="subpage-dashboard" class="subpage active">
+          <div id="dashboard-content">
+            <!-- Status Card -->
+            <div class="card status-card">
+              <div class="status-row">
+                <span class="status-label">MINING STATUS</span>
+                <span class="status-value" id="mining-status">INACTIVE</span>
+                <span class="status-dot" id="mining-status-dot"></span>
+              </div>
+              <div class="hashrate-row">
+                <span class="hashrate-label">HASHRATE</span>
+                <span class="hashrate-value" id="hashrate">0.0 H/s</span>
+              </div>
+            </div>
+
+            <!-- Earnings Card -->
+            <div class="card earnings-card">
+              <div class="earnings-header">TODAY'S EARNINGS</div>
+              <div class="earnings-number" id="today-earned">₹0.00</div>
+              <div class="progress-container">
+                <div class="progress-bar" id="daily-progress" style="width:0%"></div>
+                <span class="progress-label" id="daily-progress-label">0%</span>
+              </div>
+              <div class="target-badge" id="target-badge" style="display:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="3"><polyline points="20 6 9 17 4 12" /></svg>
+                DAILY TARGET ACHIEVED
+              </div>
+              <div class="reset-timer">Daily target resets in <span id="reset-timer">00:00:00</span></div>
+            </div>
+
+            <!-- Weekly Pending -->
+            <div class="card weekly-card">
+              <span class="weekly-label">WEEKLY PAYOUT</span>
+              <span class="weekly-amount" id="weekly-pending">₹0.00</span>
+              <span class="weekly-sub">Next payout Sunday</span>
+              <div class="week-progress">
+                <span class="day active">M</span><span class="day active">T</span>
+                <span class="day active">W</span><span class="day active">T</span>
+                <span class="day active">F</span><span class="day">S</span><span class="day">S</span>
+              </div>
+            </div>
+
+            <!-- Quick Mining Button (shortcut) -->
+            <button class="btn-mining" id="mining-btn">START MINING</button>
+
+            <!-- Graph -->
+            <div class="card graph-card">
+              <span>MINING ACTIVITY</span>
+              <div class="graph-stats">
+                <span>Hashrate <strong id="graph-hash">0 H/s</strong></span>
+                <span>Peak <strong id="graph-peak">0 H/s</strong></span>
+                <span>Avg <strong id="graph-avg">0 H/s</strong></span>
+              </div>
+              <svg class="graph-svg" viewBox="0 0 300 60" preserveAspectRatio="none">
+                <polyline id="graph-line" points="0,60 300,60" fill="none" stroke="#FBBF24" stroke-width="2" />
+              </svg>
+            </div>
+
+            <!-- History -->
+            <div class="card history-card">
+              <span>MINING HISTORY</span>
+              <div id="payout-history-body">
+                <div class="history-empty">No mining history yet.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======== PAGE: MINING ======== -->
+        <div id="subpage-mining" class="subpage" style="display:none;">
+          <div class="mining-container">
+            <div class="card status-card">
+              <div class="status-row">
+                <span class="status-label">MINING STATUS</span>
+                <span class="status-value" id="mining-status-mini">INACTIVE</span>
+                <span class="status-dot" id="mining-status-dot-mini"></span>
+              </div>
+              <div class="hashrate-row">
+                <span class="hashrate-label">HASHRATE</span>
+                <span class="hashrate-value" id="hashrate-mini">0.0 H/s</span>
+              </div>
+              <div class="connection-status">
+                <span>Connection: <span id="conn-status">Disconnected</span></span>
+              </div>
+            </div>
+
+            <div class="card earnings-card mining-earnings">
+              <div class="earnings-header">TODAY'S EARNINGS</div>
+              <div class="earnings-number" id="today-earned-mini">₹0.00</div>
+              <div class="progress-container">
+                <div class="progress-bar" id="daily-progress-mini" style="width:0%"></div>
+                <span class="progress-label" id="daily-progress-label-mini">0%</span>
+              </div>
+              <div class="target-badge" id="target-badge-mini" style="display:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="3"><polyline points="20 6 9 17 4 12" /></svg>
+                DAILY TARGET ACHIEVED
+              </div>
+              <div class="reset-timer">Resets in <span id="reset-timer-mini">00:00:00</span></div>
+            </div>
+
+            <button class="btn-mining" id="mining-btn-mini">START MINING</button>
+
+            <div class="card stats-mini-grid">
+              <div><span>Hashrate</span><strong id="hashrate-live">0 H/s</strong></div>
+              <div><span>Session</span><strong id="session-duration">00:00:00</strong></div>
+              <div><span>Today</span><strong id="today-earned-live">₹0.00</strong></div>
+            </div>
+
+            <div class="card history-card">
+              <span>MINING HISTORY</span>
+              <div id="payout-history-body-mini">
+                <div class="history-empty">No mining history yet.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======== PAGE: PAYOUTS ======== -->
+        <div id="subpage-payouts" class="subpage" style="display:none;">
+          <div class="payout-container">
+            <h2>Payouts</h2>
+            <div class="card">
+              <span class="weekly-label">PENDING WEEKLY</span>
+              <span class="weekly-amount" id="payout-pending">₹0.00</span>
+              <span class="weekly-sub">Next payout: Sunday</span>
+            </div>
+            <div class="card history-card">
+              <span>PAYOUT HISTORY</span>
+              <div id="payout-history-body-payout">
+                <div class="history-empty">No payouts yet.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======== PAGE: RESOURCES ======== -->
+        <div id="subpage-resources" class="subpage" style="display:none;">
+          <div class="resources-container">
+            <h2>Mining Resources</h2>
+            <div id="resources-grid" class="resources-grid">
+              <div class="resources-loading">Loading resources...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======== PAGE: SETTINGS ======== -->
+        <div id="subpage-settings" class="subpage" style="display:none;">
+          <div class="settings-container">
+            <h2>Settings</h2>
+            <div class="card">
+              <h3>Payout Settings</h3>
+              <div class="form-group">
+                <label for="payout-method-select-settings">Payout Method</label>
+                <select id="payout-method-select-settings">
+                  <option value="USDT">USDT — TRC20</option>
+                  <option value="INR">INR — UPI</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label id="wallet-label-settings">USDT Wallet Address (TRC20)</label>
+                <input type="text" id="wallet-address-input-settings" placeholder="Enter TRC20 address" />
+              </div>
+              <button class="btn-primary" id="save-payout-settings">SAVE SETTINGS</button>
+            </div>
+
+            <div class="card">
+              <h3>Account Security</h3>
+              <div class="form-group">
+                <label>Username</label>
+                <span id="settings-username" style="display:block;padding:8px 0;font-weight:600;">—</span>
+              </div>
+              <button class="btn-secondary" id="change-password-btn">CHANGE PASSWORD</button>
+            </div>
+
+            <div class="card">
+              <h3>App Information</h3>
+              <p>Version: 1.0.0</p>
+              <p><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======== PAGE: HELP ======== -->
+        <div id="subpage-help" class="subpage" style="display:none;">
+          <div class="help-container">
+            <h2>FAQ / Help</h2>
+            <div class="card faq-item">
+              <div class="faq-q">How does mining work? <span class="faq-toggle">+</span></div>
+              <div class="faq-a" style="display:none;">MinePulse uses your device's idle CPU to mine Monero (XMR) through WebAssembly. You earn ₹70 daily once the target is reached.</div>
+            </div>
+            <div class="card faq-item">
+              <div class="faq-q">Why is there a daily target? <span class="faq-toggle">+</span></div>
+              <div class="faq-a" style="display:none;">To ensure consistent earnings for all users and sustainable platform growth.</div>
+            </div>
+            <div class="card faq-item">
+              <div class="faq-q">How do payouts work? <span class="faq-toggle">+</span></div>
+              <div class="faq-a" style="display:none;">Every Sunday, we send your accumulated earnings to your chosen payout method (USDT or UPI).</div>
+            </div>
+            <div class="card faq-item">
+              <div class="faq-q">How do I reset my password? <span class="faq-toggle">+</span></div>
+              <div class="faq-a" style="display:none;">Please contact our support team at <strong>support@minepulse.com</strong> or via Telegram <strong>@MinePulseSupport</strong>.</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end main-content -->
+
+      <!-- Mobile Bottom Navigation -->
+      <nav class="bottom-nav mobile-only">
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg>
+          <span>Home</span>
+        </a>
+        <a href="#" class="nav-item" data-page="mining">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
+          <span>Mining</span>
+        </a>
+        <a href="#" class="nav-item" data-page="payouts">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v12M8 10l4-2 4 2" /></svg>
+          <span>Payouts</span>
+        </a>
+        <a href="#" class="nav-item" data-page="resources">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="12" y1="8" x2="12" y2="16" /></svg>
+          <span>Resources</span>
+        </a>
+        <!-- Notification Link -->
+        <a href="notification.html" class="nav-item" target="_self">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span>Alerts</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Support Modal -->
+    <div id="support-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h3>Contact Support</h3>
+        <p>To reset your password, please contact our customer care team:</p>
+        <p><strong>Email:</strong> <a href="mailto:support@minepulse.com">support@minepulse.com</a></p>
+        <p><strong>Telegram:</strong> <a href="https://t.me/MinePulseSupport" target="_blank">@MinePulseSupport</a></p>
+        <button class="btn-secondary modal-close-btn">Close</button>
+      </div>
+    </div>
+
+    <!-- Offline Banner -->
+    <div id="offline-banner" style="display:none;">
+      <span>OFFLINE</span> Waiting for connection...
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
