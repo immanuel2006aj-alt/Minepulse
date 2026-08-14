@@ -184,6 +184,11 @@ def payout():
     result = run_payout()
     return {"status": "ok", "result": result}
 
+@app.get("/test-telegram")
+def test_telegram():
+    send_telegram("🔔 Test message from MinePulse!")
+    return {"status": "ok"}
+
 # ---------- ROOT ----------
 @app.get("/")
 def root():
